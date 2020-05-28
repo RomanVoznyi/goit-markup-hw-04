@@ -200,9 +200,10 @@ p {
 }
 
 .header-page {
+  position: relative;
   display: inline-block;
-  padding-top: 32px;
-  padding-bottom: 28px;
+  padding: 32px 0px;
+
   font-weight: 500;
   letter-spacing: 0.02em;
 
@@ -213,8 +214,20 @@ p {
 .header-page:hover,
 .header-page:focus {
   color: var(--accent-color);
-  border-bottom: 4px solid var(--accent-color);
+}
+
+.active-page::after,
+.header-page:hover::after,
+.header-page:focus::after {
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  display: block;
+  width: 100%;
+  height: 4px;
   border-radius: 2px;
+
+  background-color: var(--accent-color);
 }
 
 .header-list-contacts {
