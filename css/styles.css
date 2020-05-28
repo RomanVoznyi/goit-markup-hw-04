@@ -1,15 +1,9 @@
 /*
 -------------- Common styles -------------- */
-html {
-  box-sizing: border-box;
-}
 
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-  /* outline: 1px solid tomato; */
-}
+/* * {
+  outline: 1px solid tomato;
+} */
 
 :root {
   --basic-color: #757575;
@@ -73,8 +67,10 @@ p {
   font-size: 16px;
   line-height: 1.87;
   letter-spacing: 0.06em;
-  border-radius: 4px;
   text-align: center;
+
+  border-radius: 4px;
+  cursor: pointer;
 
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 }
@@ -104,16 +100,59 @@ p {
   margin-right: 10px;
 }
 
-svg,
-svg path.basecolor {
-  fill: inherit;
-}
-
 .is-hidden {
   color: transparent;
   font-size: 0px;
   padding: 0px;
   margin: 0px;
+}
+
+/*-------------- Sprite icons styles -------------- */
+.icon-envelope {
+  width: 16px;
+  height: 11px;
+  margin-right: 10px;
+}
+
+.icon-phone {
+  width: 10px;
+  height: 15px;
+  margin-right: 10px;
+}
+
+.social-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.client-icon-one {
+  width: 45px;
+  height: 50px;
+}
+
+.client-icon-two {
+  width: 40px;
+  height: 52px;
+}
+
+.client-icon-three {
+  width: 41px;
+  height: 43px;
+}
+
+.client-icon-four {
+  width: 80px;
+  height: 42px;
+}
+
+.client-icon-five {
+  width: 59px;
+  height: 47px;
+}
+
+.client-icon-six {
+  width: 89px;
+  height: 46px;
 }
 
 /*-------------- Header styles -------------- */
@@ -200,10 +239,6 @@ svg path.basecolor {
   fill: var(--basic-color);
 }
 
-.header-contacts-ico {
-  margin-right: 10px;
-}
-
 .header-contacts-link:hover,
 .header-contacts-link:focus {
   color: var(--accent-color);
@@ -215,20 +250,25 @@ svg path.basecolor {
 .hero-section {
   margin: 0 auto;
   padding: 200px 0px;
+  max-width: 1600px;
 
   text-align: center;
-  background-image: url(./img/header.jpg);
-  background-color: #2f303a;
+  background-image: linear-gradient(
+      rgba(47, 48, 58, 0.8),
+      rgba(47, 48, 58, 0.8)
+    ),
+    url(../img/index-img/header.jpg);
   background-repeat: no-repeat;
-  background-blend-mode: overlay;
+  background-size: cover;
+  background-position: center;
 }
 
 h1 {
-  margin-bottom: 46px;
+  margin-bottom: 30px;
 
   font-weight: 900;
   font-size: 44px;
-  line-height: 1.2;
+  line-height: 1.36;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 
@@ -256,22 +296,37 @@ h1 {
   margin-right: 30px;
 }
 
-.adv-ico-box {
-  padding: 25px 0px;
-  text-align: center;
+.adv-list-item::before {
+  content: "";
+  display: block;
+  height: 120px;
   margin-bottom: 30px;
 
-  fill: var(--header-color);
+  background-size: 70px;
+  background-repeat: no-repeat;
+  background-position: center;
+
   background-color: var(--background-additional);
   border-radius: 4px;
 }
 
-.adv-ico-box:hover {
-  fill: var(--additinal-color);
-  background-color: var(--accent-color);
+.icon-antenna::before {
+  background-image: url(../img/index-img/antenna.svg);
 }
 
-.advantage {
+.icon-clock::before {
+  background-image: url(../img/index-img/clock.svg);
+}
+
+.icon-pc::before {
+  background-image: url(../img/index-img/pc.svg);
+}
+
+.icon-astronaut::before {
+  background-image: url(../img/index-img/astronaut.svg);
+}
+
+.adv-title {
   margin-bottom: 10px;
 
   font-weight: 700;
@@ -387,17 +442,12 @@ h1 {
   display: flex;
   width: 100%;
   height: 100%;
-  object-fit: cover;
   border-radius: 50%;
 
   justify-content: center;
   align-items: center;
 
   fill: var(--logos-color);
-}
-
-.social-ico {
-  fill: inherit;
 }
 
 .team-social-link:hover,
@@ -429,16 +479,10 @@ h1 {
   display: flex;
   width: 100%;
   height: 100%;
-  object-fit: cover;
 
   align-items: center;
   justify-content: center;
 
-  fill: inherit;
-}
-
-.client-logo,
-.client-logo path {
   fill: inherit;
 }
 
@@ -496,11 +540,13 @@ h1 {
 }
 
 .foot-adress {
+  display: inline-block;
   color: var(--additinal-color);
 }
 
 .foot-mail,
 .foot-phone {
+  display: inline-block;
   color: rgba(255, 255, 255, 0.6);
 }
 
@@ -522,7 +568,6 @@ h1 {
   display: flex;
   width: 100%;
   height: 100%;
-  object-fit: cover;
   border-radius: 50%;
 
   align-items: center;
@@ -574,7 +619,7 @@ h1 {
 }
 
 .foot-button {
-  display: flex;
+  display: inline-flex;
   min-width: max-content;
   height: 50px;
   padding: 0px 28px;
@@ -584,8 +629,16 @@ h1 {
   border-width: 0px;
 }
 
-.foot-button-ico {
+.foot-button::after {
+  content: "";
+  width: 24px;
+  height: 24px;
   margin-left: 10px;
+
+  background-image: url(../img/index-img/send.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .copyrights {
@@ -676,7 +729,6 @@ h1 {
 .project-link {
   width: 100%;
   height: 100%;
-  object-fit: cover;
   border-radius: inherit;
 }
 
